@@ -15,9 +15,9 @@ const registerSchema = z.object({
     z.string({required_error: 'Password is required'}).min(8, {message: 'Password must be at least 8 characteres'}).max(100),
 
     dni: 
-    z.string({required_error: 'DNI is required'}).min(10,{message: 'DNI is too short'}).max(15,{message: 'DNI is too short'}),
+    z.string({required_error: 'DNI is required'}).min(10,{message: 'DNI is too short'}).max(15,{message: 'DNI is too long'}),
 
-    genre: 
+    gender: 
     z.enum(['male', 'female', 'other']),
 
     role: 
@@ -33,6 +33,23 @@ const registerSchema = z.object({
 //This function validates that the schema in the user register is fulfilled
 export function validateUser(data){
     const result = registerSchema.safeParse(data)
+
+    const { 
+        hasError, 
+        errorMessages, 
+        data: userData,
+    } = extractValidationData(result)
+
+    return {
+        hasError,
+        errorMessages,
+        userData,
+    }
+}
+
+//This function validates that the schema in the user partially
+export function validatePartialUser(data){
+    const result = registerSchema.partial().safeParse(data)
 
     const { 
         hasError, 

@@ -25,11 +25,11 @@ export class UserService {
       where: {
         status: true,
       },
-      include: [
-        {
-          model: Pet,
-        },
-      ],
+      // include: [
+      //   {
+      //     model: Pet,
+      //   },
+      // ],
       required: false,
     });
   }
