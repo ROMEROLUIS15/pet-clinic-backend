@@ -6,7 +6,7 @@ export class UserService {
       where: {
         id,
         status: true,
-      },
+      },attributes:{ exclude:['createdAt']}
     });
   }
 
