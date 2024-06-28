@@ -1,3 +1,3 @@
 PET CLINIC
 
-La aplicación para la Clínica Veterinaria tiene como objetivo facilitar la gestión de citas médicas para mascotas y proporcionar un sistema eficiente para el equipo médico y los usuarios. La plataforma se enfoca en la reserva de citas, conectando a propietarios de mascotas con médicos veterinarios de manera sencilla y efectiva.
+The Veterinary Clinic app aims to facilitate the management of medical appointments for pets and provide an efficient system for the medical team and users. The platform focuses on appointment booking, connecting pet owners with veterinary doctors in a simple and effective way.
