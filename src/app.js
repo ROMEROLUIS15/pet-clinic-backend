@@ -4,12 +4,16 @@ import { router } from './routes/index.js'
 import { AppError } from './common/error/appError.js'
 import { globalErrorHandler } from './common/error/error.controller.js'
 import morgan from 'morgan'
+import { envs } from './config/enviroments/enviroments.js'
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(morgan('dev'))
+
+if(envs.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 
 //routes
 app.use('/api/v1', router)
