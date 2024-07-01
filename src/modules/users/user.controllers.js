@@ -6,16 +6,16 @@ import { UserService } from './user.service.js';
 //REGISTER USER CONTROLLER
 export const register = catchAsync(async(req, res, next) => {
     
-    const { hasError, errorMessages, userData } = validateUser(req.body)
+    //const { hasError, errorMessages, userData } = validateUser(req.body)
 
-    if (hasError){
-        return res.status(422).json({
-            status: 'error',
-            message: errorMessages,
-        })
-    }
+    // if (hasError){
+    //     return res.status(422).json({
+    //         status: 'error',
+    //         message: errorMessages,
+    //     })
+    // }
     
-    const user = await UserService.create(userData)
+    const user = await UserService.create(req.body)
 
     return res.status(201).json(user)
 })
