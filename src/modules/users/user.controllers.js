@@ -17,7 +17,14 @@ export const register = catchAsync(async(req, res, next) => {
     
     const user = await UserService.create(userData)
 
-    return res.status(201).json(user)
+    return res.status(201).json({
+          id: user.id,
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          role: user.role,
+          photo: user.photo,
+      });
 })
 
 

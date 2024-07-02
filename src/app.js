@@ -1,15 +1,23 @@
 import express from 'express'
-import cors from 'cors'
 import { router } from './routes/index.js'
 import { AppError } from './common/error/appError.js'
 import { globalErrorHandler } from './common/error/error.controller.js'
 import morgan from 'morgan'
 import { envs } from './config/enviroments/enviroments.js'
+import { enableCors } from './config/plugins/cors.plugins.js'
 const app = express()
 
-app.use(cors())
+const ACCEPTED_ORIGINS = [
+    'http://localhost:3000', 
+    'http://localhost:8080', 
+    'http://localhost:5173',
+]
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(morgan('dev'))
+enableCors(app, ACCEPTED_ORIGINS)
+
 
 if(envs.NODE_ENV === 'development'){
     app.use(morgan('dev'))
